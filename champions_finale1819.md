@@ -135,30 +135,7 @@ finale <- clean_df %>%
   filter(type.name == 'Pass')
 ```
 
-``` r
-ggplot(finale) +
-  annotate_pitch(dimensions = pitch_statsbomb, fill='#400D51', colour='#DDDDDD') +
-  geom_segment(aes(x=location.x, y=location.y, xend=pass.end_location.x, yend=pass.end_location.y),
-               colour = "coral",
-               arrow = arrow(length = unit(0.15, "cm"),
-                             type = "closed")) + 
-  labs(title="Virgil van Dijk passing",
-       subtitle="CL FINALE 2018/2019",
-       caption="Data Source: StatsBomb") + 
-  theme(
-    plot.background = element_rect(fill='#021e3f', color='#021e3f'),
-    panel.background = element_rect(fill='#021e3f', color='#021e3f'),
-    plot.title = element_text(hjust=0.5, vjust=0, size=14),
-    plot.subtitle = element_text(hjust=0.5, vjust=0, size=8),
-    plot.caption = element_text(hjust=0.5),
-    text = element_text(family="Geneva", color='white'),
-    panel.grid = element_blank(),
-    axis.title = element_blank(),
-    axis.text = element_blank()
-  )
-```
-
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](champions_finale1819_files/figure-gfm/pressure-1.png)<!-- -->
 
 ``` r
 #Champions leugaeu finale between tottenham and liverpool
@@ -237,7 +214,7 @@ ggplot(Salah_pressure) +
     ## Scale for 'y' is already present. Adding another scale for 'y', which will
     ## replace the existing scale.
 
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](champions_finale1819_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
 ggplot(Arnold_pressure) +
@@ -268,7 +245,7 @@ ggplot(Arnold_pressure) +
     ## Scale for 'y' is already present. Adding another scale for 'y', which will
     ## replace the existing scale.
 
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->
+![](champions_finale1819_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
 
 ``` r
 liverpool_shot <- clean_df %>%
@@ -309,6 +286,49 @@ ggplot() +
   )
 ```
 
+![](champions_finale1819_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+shot_data_Liverpool <-clean_df %>% 
+
+  filter(player.name %in% unique(clean_df$player.name),
+         type.name == "Shot",
+         team.name == "Liverpool") %>% 
+
+  mutate(is_goal = ifelse(shot.outcome.name=="Goal", 1, 0) %>% 
+           as.factor()) %>% 
+
+  
+  select(player.name, location.x, location.y, is_goal, shot.outcome.name, shot.statsbomb_xg, team.name)
+ 
+
+shot_data_Tottenham<-clean_df %>% 
+
+  filter(player.name %in% unique(clean_df$player.name),
+         type.name == "Shot",
+         team.name == "Tottenham Hotspur") %>% 
+
+  mutate(is_goal = ifelse(shot.outcome.name=="Goal", 1, 0) %>% 
+           as.factor()) %>% 
+
+  
+  select(player.name, location.x, location.y, is_goal, shot.outcome.name, shot.statsbomb_xg, team.name)
+
+ggplot()+
+  annotate_pitch(fill = "#400D51", dimensions = pitch_statsbomb)+
+  theme_pitch()+
+   theme(plot.background = element_rect(fill='#021e3f', color='#021e3f'),
+         panel.background = element_rect(fill='#021e3f', color='#021e3f')) +
+  coord_flip(xlim = c(60,120),
+             ylim = c(0,80)) +
+
+  geom_point(data = shot_data_Tottenham, 
+             aes(x = location.x, 
+                 y = location.y, 
+                 colour = shot.outcome.name, 
+                 size = shot.statsbomb_xg)) 
+```
+
 ![](champions_finale1819_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ``` r
@@ -345,49 +365,6 @@ ggplot()+
   coord_flip(xlim = c(60,120),
              ylim = c(0,80)) +
 
-  geom_point(data = shot_data_Tottenham, 
-             aes(x = location.x, 
-                 y = location.y, 
-                 colour = shot.outcome.name, 
-                 size = shot.statsbomb_xg)) 
-```
-
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
-
-``` r
-shot_data_Liverpool <-clean_df %>% 
-
-  filter(player.name %in% unique(clean_df$player.name),
-         type.name == "Shot",
-         team.name == "Liverpool") %>% 
-
-  mutate(is_goal = ifelse(shot.outcome.name=="Goal", 1, 0) %>% 
-           as.factor()) %>% 
-
-  
-  select(player.name, location.x, location.y, is_goal, shot.outcome.name, shot.statsbomb_xg, team.name)
- 
-
-shot_data_Tottenham<-clean_df %>% 
-
-  filter(player.name %in% unique(clean_df$player.name),
-         type.name == "Shot",
-         team.name == "Tottenham Hotspur") %>% 
-
-  mutate(is_goal = ifelse(shot.outcome.name=="Goal", 1, 0) %>% 
-           as.factor()) %>% 
-
-  
-  select(player.name, location.x, location.y, is_goal, shot.outcome.name, shot.statsbomb_xg, team.name)
-
-ggplot()+
-  annotate_pitch(fill = "#400D51", dimensions = pitch_statsbomb)+
-  theme_pitch()+
-   theme(plot.background = element_rect(fill='#021e3f', color='#021e3f'),
-         panel.background = element_rect(fill='#021e3f', color='#021e3f')) +
-  coord_flip(xlim = c(60,120),
-             ylim = c(0,80)) +
-
   geom_point(data = shot_data_Liverpool, 
              aes(x = location.x, 
                  y = location.y, 
@@ -395,7 +372,7 @@ ggplot()+
                  size = shot.statsbomb_xg)) 
 ```
 
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](champions_finale1819_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 ggplot()+
@@ -426,7 +403,7 @@ facet_wrap(~player.name) + labs(
     caption="Data Source: StatsBomb") 
 ```
 
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](champions_finale1819_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 ggplot()+
@@ -457,4 +434,4 @@ facet_wrap(~player.name) + labs(
     caption="Data Source: StatsBomb") 
 ```
 
-![](champions_finale1819_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](champions_finale1819_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
