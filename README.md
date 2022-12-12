@@ -14,4 +14,4 @@
   - Decision Tree
      
 ### Soccer analytics:
-- Analyzing the champions league finale of 2018/2019; Liverpool vs Tottenham
+- Analyzing the champions league final of 2018/2019; Liverpool vs Tottenham
