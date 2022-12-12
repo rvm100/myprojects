@@ -6,82 +6,10 @@ Rick van Mil
 ``` r
 library(plyr)
 library(tidyverse)
-```
-
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-    ## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
-    ## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-    ## ✔ tidyr   1.2.1      ✔ stringr 1.4.0 
-    ## ✔ readr   2.1.2      ✔ forcats 0.5.1 
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::arrange()   masks plyr::arrange()
-    ## ✖ purrr::compact()   masks plyr::compact()
-    ## ✖ dplyr::count()     masks plyr::count()
-    ## ✖ dplyr::failwith()  masks plyr::failwith()
-    ## ✖ dplyr::filter()    masks stats::filter()
-    ## ✖ dplyr::id()        masks plyr::id()
-    ## ✖ dplyr::lag()       masks stats::lag()
-    ## ✖ dplyr::mutate()    masks plyr::mutate()
-    ## ✖ dplyr::rename()    masks plyr::rename()
-    ## ✖ dplyr::summarise() masks plyr::summarise()
-    ## ✖ dplyr::summarize() masks plyr::summarize()
-
-``` r
 library(dplyr)
 library(tidyverse)
 library(tidyverse)
 library(StatsBombR)
-```
-
-    ## Loading required package: stringi
-    ## Loading required package: rvest
-    ## 
-    ## Attaching package: 'rvest'
-    ## 
-    ## The following object is masked from 'package:readr':
-    ## 
-    ##     guess_encoding
-    ## 
-    ## Loading required package: RCurl
-    ## 
-    ## Attaching package: 'RCurl'
-    ## 
-    ## The following object is masked from 'package:tidyr':
-    ## 
-    ##     complete
-    ## 
-    ## Loading required package: doParallel
-    ## Loading required package: foreach
-    ## 
-    ## Attaching package: 'foreach'
-    ## 
-    ## The following objects are masked from 'package:purrr':
-    ## 
-    ##     accumulate, when
-    ## 
-    ## Loading required package: iterators
-    ## Loading required package: parallel
-    ## Loading required package: httr
-    ## Loading required package: jsonlite
-    ## 
-    ## Attaching package: 'jsonlite'
-    ## 
-    ## The following object is masked from 'package:purrr':
-    ## 
-    ##     flatten
-    ## 
-    ## Loading required package: sp
-
-    ## Warning: replacing previous import 'foreach::when' by 'purrr::when' when loading
-    ## 'StatsBombR'
-
-    ## Warning: replacing previous import 'jsonlite::flatten' by 'purrr::flatten' when
-    ## loading 'StatsBombR'
-
-    ## Warning: replacing previous import 'foreach::accumulate' by 'purrr::accumulate'
-    ## when loading 'StatsBombR'
-
-``` r
 library(ggsoccer)
 ```
 
