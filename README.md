@@ -2,6 +2,9 @@
 
 ## Projects :bar_chart:
 
+### Interactive dashboards:
+- https://public.tableau.com/app/profile/r1419
+
 ### Spotify dashboard:
 - top 50 songs of 2021 on Spotify.
 
