@@ -138,7 +138,7 @@ finale <- clean_df %>%
 ![](champions_finale1819_files/figure-gfm/pressure-1.png)<!-- -->
 
 ``` r
-#Champions leugaeu finale between tottenham and liverpool
+#Champions league finale between tottenham and liverpool
 
 ucl<- Comp %>%
   filter(competition_id==16 & season_name=="2018/2019")
